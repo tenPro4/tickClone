@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 const TicketTable = ({ tickets }) => {
   return (
@@ -13,19 +14,12 @@ const TicketTable = ({ tickets }) => {
         </tr>
       </thead>
       <tbody>
-        {/* {tickets.length && tickets.map((row) =>{
-            <tr>
-                <td>{row.id}</td>
-                <td>{row.subject}</td>
-                <td>{row.status}</td>
-                <td></td>
-            </tr>
-        })
-        } */}
         {tickets.length ? ( tickets.map((row) => (
-          <tr> 
+          <tr key={row.id}> 
             <td>{row.id}</td>
-            <td>{row.subject}</td>
+            <td>
+            <Link to={`/ticket/${row.id}`}>{row.subject}</Link>
+            </td>
             <td>{row.status}</td>
             <td>{row.addedAt}</td>
           </tr>
